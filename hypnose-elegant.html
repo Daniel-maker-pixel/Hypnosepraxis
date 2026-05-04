@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adrian Thomé — Hypnosetherapie & Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@300;400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf8f4;
+    --cream-deep: #f2ede4;
+    --ivory: #fffdf9;
+    --gold: #b8975a;
+    --gold-light: #d4b87a;
+    --gold-pale: #ede3d0;
+    --ink: #1a1714;
+    --ink-soft: #2e2b26;
+    --muted: #8a8278;
+    --muted-light: #b5b0a8;
+    --border: rgba(184, 151, 90, 0.2);
+    --border-fine: rgba(26, 23, 20, 0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --serif-sc: 'Cormorant SC', Georgia, serif;
+    --serif-body: 'EB Garamond', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif-body);
+    font-size: 18px;
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* CUSTOM CURSOR */
+  body { cursor: crosshair; }
+  a, button { cursor: crosshair; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+    background: rgba(250, 248, 244, 0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border-fine);
+  }
+
+  .nav-logo {
+    font-family: var(--serif-sc);
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  .nav-center {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav-center a {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 300;
+  }
+
+  .nav-center a:hover { color: var(--gold); }
+
+  .nav-right a {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: 0.5px solid var(--gold);
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .nav-right a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10rem 4rem 6rem;
+    position: relative;
+    background: var(--ivory);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 6rem;
+    background: linear-gradient(to bottom, transparent, var(--gold));
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 6rem;
+    background: linear-gradient(to top, transparent, var(--gold));
+  }
+
+  .hero-ornament {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    animation: fadeIn 1.2s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-ornament::before,
+  .hero-ornament::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    animation: fadeInUp 1s ease 0.3s forwards;
+    opacity: 0;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .hero-subtitle {
+    font-family: var(--serif);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 4rem;
+    animation: fadeInUp 1s ease 0.5s forwards;
+    opacity: 0;
+    max-width: 600px;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+    animation: fadeIn 1s ease 0.7s forwards;
+    opacity: 0;
+  }
+
+  .hero-divider::before,
+  .hero-divider::after {
+    content: '';
+    display: block;
+    width: 4rem;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  .hero-divider span {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .hero-lead {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 400;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.9;
+    margin-bottom: 4rem;
+    animation: fadeInUp 1s ease 0.6s forwards;
+    opacity: 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    animation: fadeIn 1s ease 0.9s forwards;
+    opacity: 0;
+  }
+
+  .btn-gold {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    background: var(--gold);
+    border: none;
+    padding: 1.1rem 2.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, letter-spacing 0.3s;
+  }
+
+  .btn-gold:hover {
+    background: var(--ink);
+    letter-spacing: 0.4em;
+  }
+
+  .btn-ghost {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: color 0.3s;
+    padding-bottom: 2px;
+    border-bottom: 0.5px solid var(--border-fine);
+  }
+
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* SECTION */
+  section { position: relative; }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8rem 4rem;
+  }
+
+  .section-inner-wide {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 8rem 4rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .eyebrow {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .eyebrow::before, .eyebrow::after {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 0.5px;
+    background: var(--gold);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-intro {
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.85;
+  }
+
+  /* PHILOSOPHY / DREI PRINZIPIEN */
+  .philosophy-section {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .philosophy-section h2 { color: var(--cream); }
+
+  .philosophy-section .eyebrow { color: var(--gold-light); }
+  .philosophy-section .eyebrow::before,
+  .philosophy-section .eyebrow::after { background: var(--gold-light); }
+
+  .philosophy-section .section-intro { color: var(--muted-light); }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    margin-top: 5rem;
+    position: relative;
+  }
+
+  .philosophy-grid::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 33.333%;
+    width: 0.5px;
+    height: 100%;
+    background: rgba(184,151,90,0.3);
+  }
+
+  .philosophy-grid::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 66.666%;
+    width: 0.5px;
+    height: 100%;
+    background: rgba(184,151,90,0.3);
+  }
+
+  .philosophy-item { text-align: center; padding: 2rem; }
+
+  .philo-num {
+    font-family: var(--serif);
+    font-size: 4rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .philo-title {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 1.25rem;
+  }
+
+  .philo-text {
+    font-size: 15px;
+    color: var(--muted-light);
+    line-height: 1.9;
+    font-weight: 400;
+  }
+
+  /* ANGEBOTE */
+  .angebote-section { background: var(--cream-deep); }
+
+  .angebote-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border-fine);
+  }
+
+  .angebot-item {
+    background: var(--cream-deep);
+    padding: 3rem 2.5rem;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .angebot-item:hover { background: var(--ivory); }
+
+  .angebot-roman {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .angebot-title {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .angebot-text {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.85;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+  }
+
+  .angebot-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-elegant {
+    font-family: var(--serif-sc);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid var(--border);
+    padding: 0.3rem 0.75rem;
+  }
+
+  /* ÜBER MICH */
+  .about-section { background: var(--ivory); }
+
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 7rem;
+    align-items: start;
+  }
+
+  .about-left-col {}
+
+  .about-name-block {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 0.5px solid var(--border-fine);
+  }
+
+  .about-name {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-title-tag {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .qual-list { list-style: none; }
+
+  .qual-item {
+    padding: 1rem 0;
+    border-bottom: 0.5px solid var(--border-fine);
+  }
+
+  .qual-year {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .qual-name {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .qual-inst {
+    font-size: 12px;
+    color: var(--muted-light);
+    font-family: var(--serif-sc);
+    letter-spacing: 0.05em;
+  }
+
+  .about-text-col {}
+
+  .about-large-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+    border-left: 1px solid var(--gold);
+  }
+
+  .about-body {
+    font-size: 16px;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .about-body p { margin-bottom: 1.5rem; }
+  .about-body p:last-child { margin-bottom: 0; }
+  .about-body strong { color: var(--ink-soft); font-weight: 400; font-style: italic; }
+
+  /* METHODE */
+  .methode-section { background: var(--cream); }
+
+  .methode-steps-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 0.5px solid var(--border-fine);
+    margin-bottom: 4rem;
+  }
+
+  .methode-step {
+    padding: 3rem 2rem;
+    border-right: 0.5px solid var(--border-fine);
+    position: relative;
+  }
+
+  .methode-step:last-child { border-right: none; }
+
+  .step-ornament {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gold);
+    opacity: 0.25;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-heading {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+  }
+
+  .step-body {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+  }
+
+  .methode-note {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2.5rem 3rem;
+    border: 0.5px solid var(--border);
+    position: relative;
+  }
+
+  .methode-note::before {
+    content: '—';
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--gold);
+    position: absolute;
+    top: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cream);
+    padding: 0 1rem;
+  }
+
+  .methode-note p {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .methode-note strong { font-style: normal; color: var(--ink-soft); }
+
+  /* PREISE */
+  .preis-section { background: var(--cream-deep); }
+
+  .preis-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .preis-card {
+    padding: 3rem 2.5rem;
+    background: var(--ivory);
+    border: 0.5px solid var(--border-fine);
+    position: relative;
+    text-align: center;
+  }
+
+  .preis-card.featured {
+    border-color: var(--gold);
+  }
+
+  .preis-featured-tag {
+    position: absolute;
+    top: -0.65rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--serif-sc);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--ivory);
+    padding: 0 1rem;
+    white-space: nowrap;
+  }
+
+  .preis-type {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 2rem;
+  }
+
+  .preis-amount {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .preis-duration {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .preis-divider {
+    width: 2rem;
+    height: 0.5px;
+    background: var(--gold);
+    margin: 0 auto 2rem;
+  }
+
+  .preis-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.85;
+    text-align: left;
+    margin-bottom: 1.75rem;
+  }
+
+  .preis-includes {
+    list-style: none;
+    text-align: left;
+  }
+
+  .preis-includes li {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    padding: 0.35rem 0;
+    border-bottom: 0.5px solid var(--border-fine);
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .preis-includes li::before {
+    content: '·';
+    color: var(--gold);
+    font-size: 1.2rem;
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  .preis-footnote {
+    text-align: center;
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--muted-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* STANDORTE */
+  .standorte-section { background: var(--ivory); }
+
+  .standorte-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 0.5px solid var(--border-fine);
+    margin-bottom: 3rem;
+  }
+
+  .standort-item {
+    padding: 4rem 3.5rem;
+    position: relative;
+  }
+
+  .standort-item:first-child {
+    border-right: 0.5px solid var(--border-fine);
+  }
+
+  .standort-city {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .standort-subtitle {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+
+  .standort-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .standort-row {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 14px;
+    align-items: baseline;
+  }
+
+  .standort-key {
+    font-family: var(--serif-sc);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 5rem;
+    flex-shrink: 0;
+  }
+
+  .standort-val {
+    color: var(--muted);
+    font-family: var(--serif);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .online-ribbon {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .online-ribbon-text {}
+
+  .online-ribbon-label {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .online-ribbon-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+
+  .btn-cream {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--cream);
+    border: none;
+    padding: 1.1rem 2.5rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, color 0.3s;
+    flex-shrink: 0;
+  }
+
+  .btn-cream:hover { background: var(--gold); color: var(--ivory); }
+
+  /* KONTAKT */
+  .kontakt-section { background: var(--cream); }
+
+  .kontakt-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 7rem;
+    align-items: start;
+  }
+
+  .kontakt-form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .form-label {
+    font-family: var(--serif-sc);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .form-field {
+    background: transparent;
+    border: none;
+    border-bottom: 0.5px solid var(--border-fine);
+    color: var(--ink);
+    font-family: var(--serif-body);
+    font-size: 16px;
+    font-style: italic;
+    padding: 0.6rem 0;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+
+  .form-field:focus { border-color: var(--gold); }
+  .form-field::placeholder { color: var(--muted-light); font-style: italic; }
+
+  textarea.form-field { resize: none; height: 80px; }
+
+  select.form-field { cursor: crosshair; appearance: none; }
+
+  .form-btn {
+    font-family: var(--serif-sc);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ivory);
+    background: var(--ink);
+    border: none;
+    padding: 1.2rem 2.5rem;
+    cursor: crosshair;
+    margin-top: 1rem;
+    width: 100%;
+    transition: background 0.3s;
+  }
+
+  .form-btn:hover { background: var(--gold); }
+
+  .kontakt-aside {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .kontakt-block {}
+
+  .k-label {
+    font-family: var(--serif-sc);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .k-value {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .k-value a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--border-fine);
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .k-value a:hover { color: var(--gold); border-color: var(--gold); }
+
+  .kontakt-ornament {
+    padding: 2rem 2.5rem;
+    border: 0.5px solid var(--border);
+    position: relative;
+  }
+
+  .kontakt-ornament-text {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    border-top: 0.5px solid rgba(184,151,90,0.3);
+  }
+
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--cream);
+    font-weight: 300;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .footer-links a {
+    font-family: var(--serif-sc);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-location {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--muted);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 1.5rem; }
+    .nav-center { display: none; }
+    .hero { padding: 8rem 2rem 5rem; }
+    .section-inner, .section-inner-wide { padding: 5rem 2rem; }
+    .philosophy-grid, .angebote-grid, .methode-steps-row,
+    .preis-row, .standorte-pair, .kontakt-layout, .about-layout { grid-template-columns: 1fr; }
+    .philosophy-grid::before, .philosophy-grid::after { display: none; }
+    .standort-item:first-child { border-right: none; border-bottom: 0.5px solid var(--border-fine); }
+    .methode-step { border-right: none; border-bottom: 0.5px solid var(--border-fine); }
+    .methode-step:last-child { border-bottom: none; }
+    footer { flex-direction: column; text-align: center; padding: 2.5rem 2rem; }
+    .online-ribbon { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Adrian Thomé</a>
+  <ul class="nav-center">
+    <li><a href="#philosophie">Philosophie</a></li>
+    <li><a href="#angebote">Angebote</a></li>
+    <li><a href="#methode">Die Arbeit</a></li>
+    <li><a href="#about">Zur Person</a></li>
+    <li><a href="#preise">Honorar</a></li>
+    <li><a href="#standorte">Orte</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#kontakt">Erstkontakt</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-ornament">Hypnose · Coaching · HP Psychotherapie</div>
+  <h1 class="hero-title">Die Stille<br>hinter dem<br><em>Lärm.</em></h1>
+  <p class="hero-subtitle">Präzise, feinsinnige Arbeit am Unterbewusstsein.</p>
+  <div class="hero-divider"><span>Hannover &amp; Göttingen</span></div>
+  <p class="hero-lead">
+    Was uns aufhält, ist selten das, was wir sehen. Es sitzt tiefer —
+    in Prägungen, die wir vergessen haben zu hinterfragen,
+    in Mustern, die einst Schutz boten und heute einengen.
+    Hypnose ist der Schlüssel zu diesem Innenraum.
+  </p>
+  <div class="hero-actions">
+    <a href="#kontakt" class="btn-gold">Erstkontakt aufnehmen</a>
+    <a href="#angebote" class="btn-ghost">Die Arbeit entdecken</a>
+  </div>
+</section>
+
+<!-- PHILOSOPHIE -->
+<section id="philosophie" class="philosophy-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow" style="color:var(--gold-light);">
+        <span style="display:block;width:2rem;height:0.5px;background:var(--gold-light);"></span>
+        Das Fundament
+        <span style="display:block;width:2rem;height:0.5px;background:var(--gold-light);"></span>
+      </div>
+      <h2 style="color:var(--cream);">Drei Überzeugungen,<br>aus denen ich arbeite.</h2>
+      <p class="section-intro">Keine Versprechungen, die ich nicht halten kann. Keine Technik, die ich nicht verstehe. Keine Hierarchie, die uns trennt.</p>
+    </div>
+    <div class="philosophy-grid">
+      <div class="philosophy-item">
+        <div class="philo-num">I</div>
+        <div class="philo-title">Begegnung auf Augenhöhe</div>
+        <p class="philo-text">Ich begleite — ich leite nicht. Sie behalten in jedem Moment die Kontrolle über das, was in der Hypnose geschieht. Meine Aufgabe ist es, den Raum zu halten, in dem Wandel möglich wird.</p>
+      </div>
+      <div class="philosophy-item">
+        <div class="philo-num">II</div>
+        <div class="philo-title">Radikale Aufrichtigkeit</div>
+        <p class="philo-text">Ich sage Ihnen, was ich sehe — auch wenn es unbequem ist. Keine falschen Hoffnungen, keine Wunderheilungen. Veränderung entsteht in der ehrlichen Begegnung mit dem, was ist.</p>
+      </div>
+      <div class="philosophy-item">
+        <div class="philo-num">III</div>
+        <div class="philo-title">Wissenschaft und Tiefe</div>
+        <p class="philo-text">Hypnose ist messbare Neurophysiologie. Ich verbinde wissenschaftliche Fundierung mit dem Mut, auch in die feinen, schwer greifbaren Schichten des Erlebens vorzudringen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANGEBOTE -->
+<section id="angebote" class="angebote-section">
+  <div class="section-inner-wide">
+    <div class="section-header">
+      <div class="eyebrow">Die Themen</div>
+      <h2>Womit ich<br><em>arbeite.</em></h2>
+      <p class="section-intro">Jedes Anliegen verdient seine eigene Betrachtung. Dies sind Felder, in denen Hypnose nachweislich wirkt — und in denen ich Erfahrung habe.</p>
+    </div>
+    <div class="angebote-grid">
+      <div class="angebot-item">
+        <span class="angebot-roman">I</span>
+        <div class="angebot-title">Ängste, Phobien &amp; innere Zwänge</div>
+        <p class="angebot-text">Die Angst vor Bewertung, vor Versagen, vor dem Unbekannten — sie sitzt tiefer als jede rationale Überlegung. In der Hypnose begegnen wir ihr dort, wo sie wohnt: im limbischen System.</p>
+        <div class="angebot-tags">
+          <span class="tag-elegant">Prüfungsangst</span>
+          <span class="tag-elegant">Soziale Phobie</span>
+          <span class="tag-elegant">Lampenfieber</span>
+        </div>
+      </div>
+      <div class="angebot-item">
+        <span class="angebot-roman">II</span>
+        <div class="angebot-title">Raucherentwöhnung</div>
+        <p class="angebot-text">Gewohnheiten sind keine Charakterschwäche — sie sind eingravierte neuronale Pfade. Mit der zertifizierten System23-Methode nach Alexander Hartmann unterbrechen wir den Kreislauf präzise und nachhaltig.</p>
+        <div class="angebot-tags">
+          <span class="tag-elegant">System23</span>
+          <span class="tag-elegant">Gewohnheit</span>
+          <span class="tag-elegant">Freiheit</span>
+        </div>
+      </div>
+      <div class="angebot-item">
+        <span class="angebot-roman">III</span>
+        <div class="angebot-title">Selbstwert &amp; innere Blockaden</div>
+        <p class="angebot-text">Wer weiß, was er will, aber nicht ins Handeln kommt — kennt oft die tiefere Ursache nicht. Wir betrachten, was aufhält, und lösen es behutsam an seiner Wurzel.</p>
+        <div class="angebot-tags">
+          <span class="tag-elegant">Selbstwert</span>
+          <span class="tag-elegant">Klarheit</span>
+          <span class="tag-elegant">Identität</span>
+        </div>
+      </div>
+      <div class="angebot-item">
+        <span class="angebot-roman">IV</span>
+        <div class="angebot-title">Burnout-Prävention &amp; chronischer Stress</div>
+        <p class="angebot-text">Das Nervensystem, das gelernt hat, im Ausnahmezustand zu leben, kennt keine andere Melodie mehr. Wir lernen, den Grundton wieder zu finden — und halten.</p>
+        <div class="angebot-tags">
+          <span class="tag-elegant">Regulation</span>
+          <span class="tag-elegant">Erschöpfung</span>
+          <span class="tag-elegant">Resilienz</span>
+        </div>
+      </div>
+      <div class="angebot-item">
+        <span class="angebot-roman">V</span>
+        <div class="angebot-title">Depression &amp; emotionale Schwere</div>
+        <p class="angebot-text">Die Stille, die sich wie Leere anfühlt. Das Grau, das kein Licht kennt. Hypnose öffnet behutsam Zugänge zu dem, was unter der Oberfläche wartet — und was nach Wandel verlangt.</p>
+        <div class="angebot-tags">
+          <span class="tag-elegant">Stimmung</span>
+          <span class="tag-elegant">Antrieb</span>
+          <span class="tag-elegant">Tiefenarbeit</span>
+        </div>
+      </div>
+      <div class="angebot-item">
+        <span class="angebot-roman">VI</span>
+        <div class="angebot-title">Glaubenssätze &amp; emotionale Muster</div>
+        <p class="angebot-text">„Ich bin nicht gut genug." „Ich darf nicht auffallen." Solche Sätze sind keine Wahrheiten — sie sind alte Schlussfolgerungen. In der Hypnose können wir sie überprüfen und neu schreiben.</p>
+        <div class="angebot-tags">
+          <span class="tag-elegant">Glaubenssätze</span>
+          <span class="tag-elegant">Muster</span>
+          <span class="tag-elegant">Erneuerung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODE -->
+<section id="methode" class="methode-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Die Arbeit</div>
+      <h2>Wie eine Sitzung<br><em>entsteht.</em></h2>
+      <p class="section-intro">Kein Kontrollverlust, kein Dämmerzustand. Hypnose ist fokussierte, wache Innenschau — begleitet, geschützt, präzise.</p>
+    </div>
+    <div class="methode-steps-row">
+      <div class="methode-step">
+        <div class="step-ornament">I</div>
+        <div class="step-heading">Orientierung &amp; Begegnung</div>
+        <p class="step-body">Wir nehmen uns Zeit. Ich höre zu, ohne zu bewerten. Gemeinsam schauen wir, was Sie bewegt — und was Sie durch unsere Arbeit verändern möchten.</p>
+      </div>
+      <div class="methode-step">
+        <div class="step-ornament">II</div>
+        <div class="step-heading">Induktion &amp; Vertiefung</div>
+        <p class="step-body">Der analytische Verstand wird leiser. Der Raum des Unbewussten öffnet sich. Sie bleiben vollständig präsent — aber der Zugang zu inneren Bildern und Gefühlen wird weiter und klarer.</p>
+      </div>
+      <div class="methode-step">
+        <div class="step-ornament">III</div>
+        <div class="step-heading">Begegnung &amp; Wandel</div>
+        <p class="step-body">Wir arbeiten direkt im Erleben — nicht über Worte, sondern durch Bilder, Empfindungen, Erinnerungen. Hier, wo Muster entstehen, können sie sich auch auflösen.</p>
+      </div>
+      <div class="methode-step">
+        <div class="step-ornament">IV</div>
+        <div class="step-heading">Integration &amp; Ausklang</div>
+        <p class="step-body">Was ist geschehen? Was hat sich bewegt? Wir geben dem Erlebten Sprache und Raum — und schauen gemeinsam, wohin der nächste Schritt führt.</p>
+      </div>
+    </div>
+    <div class="methode-note">
+      <p>
+        <strong>Ein aufrichtiger Hinweis:</strong> Ich arbeite im Coaching- und Heilpraktiker-Rahmen. Bei schweren psychischen Erkrankungen — Psychosen, akuter Suizidalität, schweren Persönlichkeitsstörungen — gehört die Begleitung in psychiatrische oder psychotherapeutische Fachbehandlung. Ich spreche das offen an und vermittle weiter, wenn es das Richtige ist.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER MICH -->
+<section id="about" class="about-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Zur Person</div>
+      <h2>Adrian<br><em>Thomé.</em></h2>
+    </div>
+    <div class="about-layout">
+      <div class="about-left-col">
+        <div class="about-name-block">
+          <div class="about-name">Adrian Thomé</div>
+          <div class="about-title-tag">HP Psychotherapie · Hypnose-Coach</div>
+        </div>
+        <ul class="qual-list">
+          <li class="qual-item">
+            <span class="qual-year">2026</span>
+            <div class="qual-name">Zertifizierter Hypnose-Coach</div>
+            <div class="qual-inst">System23 nach Alexander Hartmann</div>
+          </li>
+          <li class="qual-item">
+            <span class="qual-year">2025</span>
+            <div class="qual-name">Bioresonanztherapeut nach Paul Schmidt</div>
+            <div class="qual-inst">PSAL · Lennestadt</div>
+          </li>
+          <li class="qual-item">
+            <span class="qual-year">2025</span>
+            <div class="qual-name">Rückführungs-Coaching &amp; Reinkarnationsarbeit</div>
+            <div class="qual-inst">Paracelsus Heilpraktikerschulen</div>
+          </li>
+          <li class="qual-item">
+            <span class="qual-year">2024</span>
+            <div class="qual-name">Staatliche Erlaubnis HP Psychotherapie</div>
+            <div class="qual-inst">Stadt Göttingen · § 1 Abs. 1 HeilprG</div>
+          </li>
+          <li class="qual-item">
+            <span class="qual-year">2024</span>
+            <div class="qual-name">Hypnose Grundlagen &amp; Fachfortbildungen</div>
+            <div class="qual-inst">Ängste / Phobien · Depression / Burnout<br>Paracelsus Heilpraktikerschulen</div>
+          </li>
+          <li class="qual-item">
+            <span class="qual-year">2024</span>
+            <div class="qual-name">Gesprächstherapie nach Carl Rogers</div>
+            <div class="qual-inst">Heilpraktikerschule Likamundi</div>
+          </li>
+          <li class="qual-item">
+            <span class="qual-year">2022</span>
+            <div class="qual-name">Quantenheilhypnose</div>
+            <div class="qual-inst">School of Depossession · QHH-SOD</div>
+          </li>
+          <li class="qual-item">
+            <span class="qual-year">1999</span>
+            <div class="qual-name">Magister Artium</div>
+            <div class="qual-inst">Philosophische Fakultät · Universität zu Köln</div>
+          </li>
+        </ul>
+      </div>
+      <div class="about-text-col">
+        <div class="about-large-quote">
+          „Was uns am tiefsten bewegt, hat selten einen Namen —
+          aber es wartet darauf, erkannt zu werden."
+        </div>
+        <div class="about-body">
+          <p>
+            Ich bin 1964 in Meschede geboren, habe in Köln Philosophie studiert und bin über einen langen, nicht geradlinigen Weg zur Hypnose gekommen. Nicht durch Zufall — sondern durch eine Frage, die mich nicht losgelassen hat: <strong>Wenn der größte Teil unserer Entscheidungen jenseits des Bewusstseins entsteht, warum ignorieren wir diesen Raum in so gut wie allem, was wir zur Veränderung tun?</strong>
+          </p>
+          <p>
+            Die Suche nach Antworten führte mich zur Hypnose, zur Ausbildung bei den Paracelsus Heilpraktikerschulen, zu Alexander Hartmanns System23 und schließlich zur staatlichen Zulassung als Heilpraktiker für Psychotherapie. Über vierzig Sitzungen mit Menschen in sehr unterschiedlichen Lebenssituationen haben mir gezeigt, wie fein und präzise Hypnose wirken kann — und wie sehr sie von Vertrauen und Feingefühl lebt.
+          </p>
+          <p>
+            Ich arbeite in Hannover-Isernhagen sowie in der Gemeinschaftspraxis La Vida in Göttingen, die ich mit dem Hypnosetherapeuten und Heilpraktiker Niels Voges teile. Wo tiefere, klinische Themen in spezialisierte Hände gehören, sage ich das — und vermittle weiter.
+          </p>
+          <p>
+            Was mich antreibt, ist nicht die Methode als Selbstzweck. Es ist das Privileg, Menschen in Momenten echter Bereitschaft zur Veränderung begleiten zu dürfen. Das ist keine Kleinigkeit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREISE -->
+<section id="preise" class="preis-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Das Honorar</div>
+      <h2>Transparent.<br><em>Klar. Fair.</em></h2>
+      <p class="section-intro">Sie entscheiden, wie viele Sitzungen Sie brauchen. Keine Mindestlaufzeiten, keine verborgenen Kosten.</p>
+    </div>
+    <div class="preis-row">
+      <div class="preis-card">
+        <div class="preis-type">Orientierung</div>
+        <div class="preis-amount">Kostenfrei</div>
+        <div class="preis-duration">ca. 20 Minuten</div>
+        <div class="preis-divider"></div>
+        <p class="preis-desc">Ein erstes Gespräch — per Telefon oder Video — um zu verstehen, ob und wie wir miteinander arbeiten können. Unverbindlich, ohne Erwartung.</p>
+        <ul class="preis-includes">
+          <li>Telefonisch oder per Video</li>
+          <li>Klärung des Anliegens</li>
+          <li>Gegenseitiges Kennenlernen</li>
+        </ul>
+      </div>
+      <div class="preis-card featured">
+        <div class="preis-featured-tag">Häufig gewählt</div>
+        <div class="preis-type">Einzelsitzung</div>
+        <div class="preis-amount">130 €</div>
+        <div class="preis-duration">ca. 90 Minuten</div>
+        <div class="preis-divider"></div>
+        <p class="preis-desc">Eine vollständige Sitzung mit Vor- und Nachgespräch. Für ein konkretes Anliegen — oder als Einstieg in eine tiefere Zusammenarbeit.</p>
+        <ul class="preis-includes">
+          <li>Anamnese oder direkter Beginn</li>
+          <li>Quittung oder Rechnung inklusive</li>
+          <li>Zahlung bar, PayPal, Überweisung</li>
+        </ul>
+      </div>
+      <div class="preis-card">
+        <div class="preis-type">Weitere Sitzungen</div>
+        <div class="preis-amount">130 €</div>
+        <div class="preis-duration">je Sitzung · ca. 90 Min.</div>
+        <div class="preis-divider"></div>
+        <p class="preis-desc">Bei den meisten Themen zeigen sich nach zwei bis fünf Sitzungen spürbare Veränderungen. Das Tempo bestimmen Sie.</p>
+        <ul class="preis-includes">
+          <li>Kein Abonnement, keine Bindung</li>
+          <li>Auch online möglich</li>
+          <li>Hausbesuche auf Anfrage</li>
+          <li>Sozialrabatt auf Nachfrage</li>
+        </ul>
+      </div>
+    </div>
+    <p class="preis-footnote">
+      Gesetzliche Krankenkassen erstatten Hypnosebehandlungen in der Regel nicht.
+      Manche privaten Zusatzversicherungen übernehmen Heilpraktiker-Leistungen —
+      bitte erfragen Sie dies vorab bei Ihrer Krankenkasse.
+    </p>
+  </div>
+</section>
+
+<!-- STANDORTE -->
+<section id="standorte" class="standorte-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Die Orte</div>
+      <h2>Wo wir uns<br><em>begegnen.</em></h2>
+      <p class="section-intro">Zwei Praxisorte in Niedersachsen — oder, wenn Sie es wünschen, in der Stille Ihres eigenen Zuhauses.</p>
+    </div>
+    <div class="standorte-pair">
+      <div class="standort-item">
+        <div class="standort-city">Hannover</div>
+        <div class="standort-subtitle">Region Isernhagen</div>
+        <div class="standort-detail-row">
+          <div class="standort-row">
+            <span class="standort-key">Lage</span>
+            <span class="standort-val">Hannover-Isernhagen, gut erreichbar aus dem gesamten Großraum Hannover</span>
+          </div>
+          <div class="standort-row">
+            <span class="standort-key">Termine</span>
+            <span class="standort-val">Nach persönlicher Vereinbarung</span>
+          </div>
+        </div>
+      </div>
+      <div class="standort-item">
+        <div class="standort-city">Göttingen</div>
+        <div class="standort-subtitle">Gemeinschaftspraxis La Vida</div>
+        <div class="standort-detail-row">
+          <div class="standort-row">
+            <span class="standort-key">Adresse</span>
+            <span class="standort-val">Geismar Landstraße 19c · 37083 Göttingen</span>
+          </div>
+          <div class="standort-row">
+            <span class="standort-key">Raum</span>
+            <span class="standort-val">Ruhig gelegen, barrierefrei, mit Garten und altem Baumbestand</span>
+          </div>
+          <div class="standort-row">
+            <span class="standort-key">Praxis</span>
+            <span class="standort-val">Geteilt mit HP Niels Voges, Hypnosetherapeut und Heilpraktiker für Psychotherapie</span>
+          </div>
+          <div class="standort-row">
+            <span class="standort-key">Termine</span>
+            <span class="standort-val">Nach persönlicher Vereinbarung</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="online-ribbon">
+      <div class="online-ribbon-text">
+        <div class="online-ribbon-label">Online-Sitzungen</div>
+        <div class="online-ribbon-title">Manchmal ist der vertrauteste Ort<br>der beste Ort für Wandel.</div>
+      </div>
+      <a href="#kontakt" class="btn-cream">Online-Termin anfragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="kontakt-section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="eyebrow">Erstkontakt</div>
+      <h2>Der erste<br><em>Schritt.</em></h2>
+      <p class="section-intro">Ein kurzes Gespräch, um zu verstehen, was Sie bewegt — und ob wir gemeinsam arbeiten möchten. Kostenfrei, unverbindlich, in aller Ruhe.</p>
+    </div>
+    <div class="kontakt-layout">
+      <form class="kontakt-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Ihr Name</label>
+          <input type="text" class="form-field" placeholder="Wie darf ich Sie ansprechen?" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">E-Mail oder Telefonnummer</label>
+          <input type="text" class="form-field" placeholder="Wie erreiche ich Sie?" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ihr Anliegen</label>
+          <select class="form-field">
+            <option value="">Wählen Sie bitte …</option>
+            <option>Ängste · Phobien · Zwänge</option>
+            <option>Raucherentwöhnung</option>
+            <option>Stress · Burnout-Prävention</option>
+            <option>Selbstwert · innere Blockaden</option>
+            <option>Depression · emotionale Schwere</option>
+            <option>Glaubenssätze · Lebensmuster</option>
+            <option>Etwas anderes</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Bevorzugter Ort</label>
+          <select class="form-field">
+            <option value="">Bitte wählen …</option>
+            <option>Hannover-Isernhagen</option>
+            <option>Göttingen · Gemeinschaftspraxis La Vida</option>
+            <option>Online · per Video</option>
+            <option>Hausbesuch · auf Anfrage</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Was ich noch wissen darf</label>
+          <textarea class="form-field" placeholder="Optional — was immer Ihnen wichtig erscheint."></textarea>
+        </div>
+        <button type="submit" class="form-btn">Nachricht übermitteln</button>
+      </form>
+      <div class="kontakt-aside">
+        <div class="kontakt-block">
+          <div class="k-label">Direkt erreichbar</div>
+          <div class="k-value"><a href="tel:+49">Nummer auf Anfrage</a><br><span style="font-size:13px;color:var(--muted-light);font-style:italic;">Ich melde mich in aller Regel am selben Tag.</span></div>
+        </div>
+        <div class="kontakt-block">
+          <div class="k-label">Per E-Mail</div>
+          <div class="k-value"><a href="mailto:kontakt@adrian-thome.de">kontakt@adrian-thome.de</a></div>
+        </div>
+        <div class="kontakt-block">
+          <div class="k-label">Reaktionszeit</div>
+          <div class="k-value" style="font-size:14px;color:var(--muted);font-style:italic;line-height:1.8;">In der Regel innerhalb von 24 Stunden. Bei dringlichem Anliegen bitte telefonisch.</div>
+        </div>
+        <div class="kontakt-ornament">
+          <p class="kontakt-ornament-text">
+            Das Orientierungsgespräch dient der gegenseitigen Wahrnehmung. Ich behalte mir vor, eine Zusammenarbeit abzulehnen, wenn Hypnose nicht das geeignete Mittel ist — in diesem Fall verweise ich Sie aufrichtig an geeignete Fachleute weiter.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Adrian Thomé · Heilpraktiker für Psychotherapie</div>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+  </div>
+  <div class="footer-location">Hannover · Göttingen · Online</div>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-btn');
+  const original = btn.textContent;
+  btn.textContent = 'Ihre Nachricht ist angekommen.';
+  btn.style.background = 'var(--gold)';
+  setTimeout(() => {
+    btn.textContent = original;
+    btn.style.background = '';
+    e.target.reset();
+  }, 3500);
+}
+</script>
+</body>
+</html>
